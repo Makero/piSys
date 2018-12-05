@@ -4,17 +4,63 @@
 <head>
     <link type="text/css" rel="stylesheet" href="css/common.css"/>
     <style>
-    .moudle{background:#333;padding:6px;}
-        .moudle h3{color:#fff;}
+        body{background:#333;}
+        main{width:1024px;margin:0 auto;}
+        .moudle{float:left;padding:60px;background:rgba(255,255,255,.3);margin:10px;}
+        .moudle h3{height:30px;color:#fff;font-size:18px;font-weight:500;margin-bottom: 20px;}
+
+        .speech input{width:100px;height:30px;border:1px solid #efefef;}
+        .speech button{border:1px solid #efefef;color:#333;width:60px;height:30px;cursor:pointer;}
+        .direction{width:180px;position:relative}
+        .direction li{width:60px;height:40px;line-height:40px;text-align:center;float:left;}
+        .direction li.btn{background:rgba(255,255,255,.3);color:#efefef;cursor:pointer;border-radius:8px;}
+        .direction li.btn:active{background:rgba(255,255,255,.6)}
+
+        .device .switch{float:left;width:40px;height:20px;background:#efefef;font-size:12px;border:1px solid #ccc;border-radius:10px;position:relative;}
+        .device .switch:before{position:absolute;color:#fff;text-align:center;width:26px;height:20px;line-height:20px;border-radius:10px;cursor:pointer;transition: left .3s;}
+        .device .switch.on:before{content:"开";left:0;background:#1FC971;}
+        .device .switch.off:before{content:"关";left:14px;background:grey;}
+        .device em{float:left;margin-right:10px;}
+        .device label{float:left;margin-left:20px;}
+        .catch .video{width:835px;height:600px;margin-top:10px;background:#999;position: relative;}
+        .catch .video .msg{position:absolute;left:40%;top:50%;}
     </style>
 </head>
 <body>
 <main>
     <div class="moudle">
         <h3>语音</h3>
-        <div>
+        <div class="speech">
             <input id="talk" placeholder="输入文本"/>
             <button id="sub">提交</button>
+        </div>
+    </div>
+
+    <div class="moudle">
+        <h3>方向</h3>
+        <div class="direction">
+            <ol>
+                <li> </li><li class="btn">上</li><li> </li>
+                <li class="btn">左</li><li> </li><li class="btn">右</li>
+                <li> </li><li class="btn">下</li><li> </li>
+            </ol>
+        </div>
+    </div>
+    <div class="moudle">
+        <h3>设备</h3>
+        <div class="device">
+            <label><em>摄像头</em><span class="switch off" data-device="camera"></span></label>
+            <label><em>灯</em><span class="switch off" data-device="led"></span></label>
+        </div>
+    </div>
+
+    <div class="moudle">
+        <h3>视频捕捉</h3>
+        <div class="catch">
+            <div class="video">
+                <p class="msg">摄像头处于关闭状态</p>
+                <!--<iframe src="#"></iframe>-->
+            </div>
         </div>
     </div>
 </main>
@@ -23,7 +69,6 @@
 <script>
     $("#sub").click(function(){
         var say = $("#talk").val();
-        alert(say);
         $.ajax({
             url:"/control/ajax/talk",
             type:"post",
@@ -32,7 +77,31 @@
 
             }
         })
-    })
+    });
 
+    $(".switch").click(function(){
+        var on = $(this).hasClass("on");
+        var is_light = false;
+        var device = $(this).attr("data-device");
+        if(on){
+            $(this).removeClass("on").addClass("off");
+            is_light = false;
+        }else{
+            $(this).removeClass("off").addClass("on");
+            is_light = true;
+        }
+        control(device, is_light);
+    });
+
+    function control(device, status){
+        $.ajax({
+            url:'/control/ajax/device',
+            type:'post',
+            data:{device:device, status:status},
+            success:function(){
+
+            }
+        });
+    }
 </script>
 </html>

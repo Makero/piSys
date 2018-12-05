@@ -41,7 +41,7 @@ a{text-decoration: none;}
 .fl{float:left;}
 .fr{float:right;}
 /*清浮动*/
-.clear:after{content:"";display:block;clear:both;}
+.clearfix:after{content:"";display:block;clear:both;}
 /*遮罩*/
 .cover:before{content:"";position:absolute;width:100%;height:100%;z-index:10;}
 

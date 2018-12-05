@@ -6,7 +6,7 @@ main .printBox .clean:active{background:#AFB4DC;}
 main .print{width:780px;height:260px;padding:10px 10px 0 10px;background:#40433B;color:#DB7134;overflow:auto;}
 main .piCode{float:left;position:absolute;bottom:0;}
 main .control{margin-top:150px;text-align:center;}
-main .control a{padding:4px 6px;border:1px solid #ccc;color:#ccc;font-size:12px;border-radius: 2px;}
+main .control a{padding:6px;border:1px solid #ccc;color:#ccc;font-size:12px;border-radius: 2px;}
 
 main .piCode .btnBox{position:absolute;width:800px;height:380px;top:25px;left:0;background:rgba(49,142,245,.6);}
 main .piCode .btnBox h5{text-align:center;color:#E55ACB;font-size:20px;margin-top:120px;}
@@ -14,7 +14,7 @@ main .piCode .selBtn{position:absolute;top:200px;left:270px;}
 main .piCode .selBtn button{width:120px;height:40px;font-size:16px;border-radius:4px;margin-right:20px;color:#fff;background:#5A6AE5;cursor:pointer;}
 main .piCode textarea{width:780px;height:360px;padding:10px;float:left;border:0;color:#fff;background:#272822;}
 main .piCode ul{width:80px;height:30px;float:left;}
-main .piCode ul li button{width:100%;height:100%;margin-bottom:10px;border-radius:0 4px 4px 0;border:1px solid #ccc;border-left:0;cursor:pointer;}
+main .piCode ul li button{width:100%;height:30px;margin-bottom:10px;border-radius:0 4px 4px 0;border:1px solid #ccc;border-left:0;cursor:pointer;}
 main .piCode ul li.clear button:active{background:#E8F08B;}
 main .piCode ul li.run button:active{background:#F0B98B;}
 main .piBox{float:right;margin-right:100px;margin-top:20px;}

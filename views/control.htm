@@ -11,6 +11,7 @@
 
         .speech input{width:100px;height:30px;border:1px solid #efefef;}
         .speech button{border:1px solid #efefef;color:#333;width:60px;height:30px;cursor:pointer;}
+        .speech button[disabled]{color:#ccc;background:#999;cursor:not-allowed;}
         .direction{width:180px;position:relative}
         .direction li{width:60px;height:40px;line-height:40px;text-align:center;float:left;}
         .direction li.btn{background:rgba(255,255,255,.3);color:#efefef;cursor:pointer;border-radius:8px;}
@@ -41,9 +42,9 @@
         <h3>方向</h3>
         <div class="direction">
             <ol>
-                <li> </li><li class="btn">上</li><li> </li>
-                <li class="btn">左</li><li> </li><li class="btn">右</li>
-                <li> </li><li class="btn">下</li><li> </li>
+                <li> </li><li class="btn" data-move="on">上</li><li> </li>
+                <li class="btn" data-move="left">左</li><li> </li><li class="btn" data-move="right">右</li>
+                <li> </li><li class="btn" data-move="back">下</li><li> </li>
             </ol>
         </div>
     </div>
@@ -70,13 +71,29 @@
 <script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
 <script>
     $("#sub").click(function(){
-        var say = $("#talk").val();
+        var say = $("#talk").val().replace(/\s+/g,'');
+        if(!say.length){
+            return;
+        }
+        $("#sub").attr("disabled","disabled");
         $.ajax({
             url:"/control/ajax/talk",
             type:"post",
             data:{say:say},
             success:function(result){
+                $("#sub").removeAttr("disabled");
+            }
+        })
+    });
 
+    $(".direction .btn").click(function(){
+            var move = $(this).attr("data-move");
+            $.ajax({
+            url:"/control/ajax/move",
+            type:"post",
+            data:{move:move},
+            success:function(result){
+                
             }
         })
     });
@@ -101,10 +118,13 @@
             type:'post',
             data:{device:device, status:status},
             success:function(result){
+                console.log(result);
                 if(device === 'camera' && status === 'on' && result === '1'){
+                    $(".msg").hide();
                     $("#imgCamera").html("<img src='http://192.168.0.105:8080/?action=stream'>");
                 }
                 if(device === 'camera' && status === 'off'){
+                    $(".msg").show();
                     $("#imgCamera").html("");
                 }
             }

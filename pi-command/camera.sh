@@ -8,7 +8,7 @@ echo "Stop Camera"
 ID=`ps -ef|grep 'mjpg_streamer'|grep -v 'grep'|awk '{print $2}'`
 for pid in $ID
 do
-  kill -9 $pid
-  #echo " kill omxplayer pid:$pid"
+  sudo kill -9 $pid
+  echo " kill omxplayer pid:$pid"
 done
 fi

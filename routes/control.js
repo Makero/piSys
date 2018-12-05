@@ -16,25 +16,36 @@ router.post('/ajax/talk', function(req, res, next){
     });
 });
 
+//方向
+router.post('/ajax/move', function(req, res, next){
+    var command = 'python3 pi-command/car.py "'  + req.body.move +'"';
+    child_process.exec(command, function(err, stdout, stderr){
+		if(err) throw err;
+        res.send(stderr||"1");
+    });
+});
+
 function LED(status){
     return 'python3 pi-command/led.py ' + status;
 }
 function Camera(status){
-    return 'sudo pi-command/camera.sh ' + status;
+    return 'pi-command/camera.sh ' + status;
 }
 //设备
 router.post('/ajax/device', function(req, res, next){
-    console.log(req.body);
     var command = '';
     switch(req.body.device){
     	case 'led': command = LED(req.body.status);break;
     	case 'camera': command = Camera(req.body.status);break;
     }
-    child_process.exec(command, function(err, stdout, stderr){
-		if(err) throw err;
-        res.send(stderr||"1");
-    });
-   
+    try{
+	    child_process.exec(command);
+	}catch(e){
+		console.log(e);
+	}
+	setTimeout(function(){
+		res.send("1");
+	},1000);
 });
 
 

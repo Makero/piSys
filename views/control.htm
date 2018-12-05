@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<title>树莓派控制台</title>
+<head>
+    <link type="text/css" rel="stylesheet" href="css/common.css"/>
+    <style>
+    .moudle{background:#333;padding:6px;}
+        .moudle h3{color:#fff;}
+    </style>
+</head>
+<body>
+<main>
+    <div class="moudle">
+        <h3>语音</h3>
+        <div>
+            <input id="talk" placeholder="输入文本"/>
+            <button id="sub">提交</button>
+        </div>
+    </div>
+</main>
+</body>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script>
+    $("#sub").click(function(){
+        var say = $("#talk").val();
+        alert(say);
+        $.ajax({
+            url:"/control/ajax/talk",
+            type:"post",
+            data:{say:say},
+            success:function(result){
+
+            }
+        })
+    })
+
+</script>
+</html>

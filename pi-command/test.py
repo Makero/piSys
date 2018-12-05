@@ -1,0 +1,34 @@
+import time
+import RPi.GPIO as GPIO
+GPIO_PIN35 = 35
+GPIO_PIN36 = 36
+GPIO_PIN37 = 37
+GPIO_PIN38 = 38
+ENA = 31
+ENB = 32
+GPIO.setmode(GPIO.BOARD)
+GPIO.setwarnings(False)
+GPIO.setup(GPIO_PIN35,GPIO.OUT)
+GPIO.setup(GPIO_PIN36,GPIO.OUT)
+GPIO.setup(GPIO_PIN37,GPIO.OUT)
+GPIO.setup(GPIO_PIN38,GPIO.OUT)
+GPIO.setup(ENA,GPIO.OUT)
+GPIO.setup(ENB,GPIO.OUT)
+GPIO.output(GPIO_PIN35,GPIO.LOW)
+GPIO.output(GPIO_PIN36,GPIO.HIGH)
+GPIO.output(GPIO_PIN37,GPIO.HIGH)
+GPIO.output(GPIO_PIN38,GPIO.LOW)
+GPIO.output(ENA,GPIO.LOW)
+GPIO.output(ENB,GPIO.LOW)
+n=5000
+sleep = 0.0005
+while n:
+ time.sleep(sleep)
+ GPIO.output(ENA,GPIO.LOW)
+ GPIO.output(ENB,GPIO.LOW)
+ time.sleep(sleep)
+ GPIO.output(ENA,GPIO.HIGH)
+ GPIO.output(ENB,GPIO.HIGH)
+ n = n-1
+GPIO.output(ENA,GPIO.LOW)
+GPIO.output(ENB,GPIO.LOW)

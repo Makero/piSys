@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+        <meta name="MobileOptimized" content="320">
+        <meta name="format-detection" content="telephone=no">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <title>Chat by Web Sockets</title>
+         
+        <style type='text/css'>
+            button{width:100px;height:30px;margin-right:40px;}
+        </style>
+    </head>
+    <body>
+        <audio id="audio" controls autoplay></audio>
+
+       <button id="record">录音</button><button id="export">暂停</button>
+       <div id="message"></div>
+    </body>
+    <script type="text/javascript" src="js/HZRecorder.js"> </script>
+    <script type="text/javascript" src="js/jquery-1.11.3.min.js"> </script>
+    <script type='text/javascript'>
+        var recorder;
+        var audio = document.querySelector('#audio');
+        
+            HZRecorder.get(function (rec) {
+                recorder = rec;  
+            });
+        $('#record').click(function() {
+            
+            recorder.start();
+            $("#message").text("Click export to stop recording");
+        });
+
+        $('#export').click(function() {
+                recorder.stop();
+                recorder.play(audio);
+                recorder.upload("/audio");
+            });
+        
+        </script>
+</html>

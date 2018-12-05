@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<title>树莓派开发系统</title>
+<head>
+<link type="text/css" rel="stylesheet" href="css/common.css"/>
+<link type="text/css" rel="stylesheet" href="css/index.css"/>
+</head>
+<body>
+<main>
+	<div class="printBox">
+		<h4>程序运行结果</h4>
+		<div id="terminal" class="print"></div>
+		<button class="clean">清空运行结果</button>
+	</div>
+	<div class="piCode">
+		<h3>树莓派开发<em id="proName" class="ml20 f14 dis" data-type='py'>python程序</em></h3>
+		<div class="btnBox">
+			<h5>请先选择开发语言</h5>
+			<p class="selBtn">
+				<button>python</button>
+				<button>C</button>
+			</p>
+			<p class="control"><a href="/control" target="_blank">进入控制台</a></p>
+		</div>
+		<textarea id="program" onkeydown="tab(this)"></textarea>
+		<ul id="exeBtn" class="dis">
+			<li class="clear"><button>清除</button></li>
+			<li class="cancel dis"><button>还原</button></li>
+			<li class="run"><button>运行</button></li>
+		</ul>
+	</div>
+	<div class="piBox">
+		<h3>树莓派GPIO</h3>
+		<div class="gpio">
+			<ul class="clear"></ul>
+		</div>
+	</div>
+</main>
+</body>
+<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+</html>

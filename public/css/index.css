@@ -1,0 +1,27 @@
+main{width:1200px;height:750px;margin:0 auto;position:relative;}
+main .printBox{position:absolute;top:20px;}
+main .printBox h4{width:20px;position:absolute;top:0;right:-23px;}
+main .printBox .clean{width:120px;height:30px;float:right;cursor:pointer;}
+main .printBox .clean:active{background:#AFB4DC;}
+main .print{width:780px;height:260px;padding:10px 10px 0 10px;background:#40433B;color:#DB7134;overflow:auto;}
+main .piCode{float:left;position:absolute;bottom:0;}
+main .control{margin-top:150px;text-align:center;}
+main .control a{padding:4px 6px;border:1px solid #ccc;color:#ccc;font-size:12px;border-radius: 2px;}
+
+main .piCode .btnBox{position:absolute;width:800px;height:380px;top:25px;left:0;background:rgba(49,142,245,.6);}
+main .piCode .btnBox h5{text-align:center;color:#E55ACB;font-size:20px;margin-top:120px;}
+main .piCode .selBtn{position:absolute;top:200px;left:270px;}
+main .piCode .selBtn button{width:120px;height:40px;font-size:16px;border-radius:4px;margin-right:20px;color:#fff;background:#5A6AE5;cursor:pointer;}
+main .piCode textarea{width:780px;height:360px;padding:10px;float:left;border:0;color:#fff;background:#272822;}
+main .piCode ul{width:80px;height:30px;float:left;}
+main .piCode ul li button{width:100%;height:100%;margin-bottom:10px;border-radius:0 4px 4px 0;border:1px solid #ccc;border-left:0;cursor:pointer;}
+main .piCode ul li.clear button:active{background:#E8F08B;}
+main .piCode ul li.run button:active{background:#F0B98B;}
+main .piBox{float:right;margin-right:100px;margin-top:20px;}
+main .piBox h3{text-align:center;margin-bottom:20px;}
+main .gpio{width:100px;padding:20px 0;background:#6AC158;}
+main .gpio li{float:left;width:50%;margin:6px 0;position:relative;}
+main .gpio li em{width:60px;height:30px;line-height:30px;text-align:center;background:#ccc;position:absolute;top:-5px;}
+main .gpio li:nth-child(odd) em{left:-60px;}
+main .gpio li:nth-child(even) em{right:-60px;}
+main .gpio li i{display:block;width:20px;height:20px;line-height:20px;font-size:12px;text-align:center;margin:0 auto;border-radius: 10px;background:#C1D6D6;color:#fff;}

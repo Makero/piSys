@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=no"/>
+		<meta name="MobileOptimized" content="320">
+		<meta name="format-detection" content="telephone=no">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<title>我的家园</title>
+		<link type="text/css" rel="stylesheet" href="css/common.css"/>
+		<link type="text/css" rel="stylesheet" href="css/assem.css"/>
+		<style>
+			body{background:#fff;}
+			.wrapper li{float:left;margin:12px;}
+			.wrapper li label{display:block;text-align:center;margin-bottom:6px;}
+			.audio button{width:80px;height:30px;}
+			.speech{width:120px;height:120px;border-radius:60px;margin:60px auto;background:url(images/say.jpg) no-repeat center;}
+			.layer{width:100%;height:100%;position:absolute;top:0;left:0;background:rgba(0,0,0,.3);z-index:2;}
+			.layer .cont{width:260px;height:260px;text-align:center;margin:30% auto;border-radius:10px;background:#fff;position:relative;}
+			.layer .cont h2{font-size:20px;padding-top:20px;color:#333;}
+			.layer .cont p{font-size:18px;padding-top:60px;color:#999;}
+			.layer .cont em{font-size:14px;color:#ccc;position:absolute;bottom:20px;left:20px;}
+			.talk-btn{padding:10px 30px;display:block;font-size:18px;border-radius: 6px;margin:20px auto;color:#fff;background:#efefef;}
+		</style>
+	</head>
+	<body>
+		<div class="wrapper">
+			<div class="btns">
+				<ul id="control" class="clear">
+					<li><label speech="花棚">花棚灯</label><span class="switch" device="led:22"></span></li>
+					<li><label speech="台灯">台灯</label><span class="switch" device="led:24"></span></li>
+					<li><label speech="路灯">路灯</label><span class="switch" device="led:26"></span></li>
+					<li><label speech="客厅">客厅灯</label><span class="switch" device="led:32"></span></li>
+					<li><label speech="卧室">卧室灯</label><span class="switch" device="led:36"></span></li>
+					<li><label speech="阳光房">阳光房灯</label><span class="switch" device="led:38"></span></li>
+					<li><label speech="餐厅">餐厅灯</label><span class="switch" device="led:40"></span></li>
+					<li><label speech="音乐">音乐</label><span class="switch" device="music:1"></span></li>
+				</ul>
+			</div>
+			<div class="speech dis" status="1"></div>
+			<button class="talk-btn" data="手动控制">语音控制</button>
+			<div class="layer dis">
+				<div class="cont">
+					<h2 id="tit"></h2>
+					<p id="talk">正在加载...</p>
+					<em id="ttx"></em>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="js/HZRecorder.js"> </script>
+		<script type="text/javascript" src="js/jquery-1.11.3.min.js"></script>
+		<script type="text/javascript" src="js/assem.js"></script>
+		<script type="text/javascript" src="js/home.js"></script>
+	</body>
+</html>

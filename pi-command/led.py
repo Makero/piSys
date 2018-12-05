@@ -1,10 +1,11 @@
 #encoding=utf-8 
 import sys
+import gpio
 import RPi.GPIO as GPIO
 
 def LED():
-	pin    = sys.argv[1]
-	on_off = sys.argv[2]
+	pin    = gpio.GPIO_PIN_LED
+	on_off = sys.argv[1]
 	level  = {"on":GPIO.HIGH,"off":GPIO.LOW}
 
 	if len(pin) > 2:

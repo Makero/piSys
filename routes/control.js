@@ -16,9 +16,25 @@ router.post('/ajax/talk', function(req, res, next){
     });
 });
 
+function LED(status){
+    return 'python3 pi-command/led.py ' + status;
+}
+function Camera(status){
+    return 'sudo pi-command/camera.sh ' + status;
+}
 //设备
 router.post('/ajax/device', function(req, res, next){
     console.log(req.body);
+    var command = '';
+    switch(req.body.device){
+    	case 'led': command = LED(req.body.status);break;
+    	case 'camera': command = Camera(req.body.status);break;
+    }
+    child_process.exec(command, function(err, stdout, stderr){
+		if(err) throw err;
+        res.send(stderr||"1");
+    });
+   
 });
 
 
